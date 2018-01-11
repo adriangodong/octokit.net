@@ -18,9 +18,7 @@ namespace Octokit
         static readonly Uri _currentUserNotificationsEndpoint = new Uri("notifications", UriKind.Relative);
         static readonly Uri _currentUserAllIssues = new Uri("issues", UriKind.Relative);
         static readonly Uri _currentUserOwnedAndMemberIssues = new Uri("user/issues", UriKind.Relative);
-        static readonly Uri _oauthAuthorize = new Uri("login/oauth/authorize", UriKind.Relative);
-        static readonly Uri _oauthAccessToken = new Uri("login/oauth/access_token", UriKind.Relative);
-
+        
         /// <summary>
         /// Returns the <see cref="Uri"/> that returns all public repositories in
         /// response to a GET request.
@@ -296,6 +294,32 @@ namespace Octokit
         public static Uri AccessTokens(int installationId)
         {
             return "installations/{0}/access_tokens".FormatUri(installationId);
+        }
+
+        /// <summary>
+        /// Returns the <see cref="Uri"/> that creates a github app.
+        /// </summary>
+        public static Uri App()
+        {
+            return "app".FormatUri();
+        }
+
+        /// <summary>
+        /// Returns the <see cref="Uri"/> that returns all the installations of the authenticated application.
+        /// </summary>
+        /// <returns></returns>
+        public static Uri Installations()
+        {
+            return "app/installations".FormatUri();
+        }
+
+        /// <summary>
+        /// Returns the <see cref="Uri"/> that returns a single installation of the authenticated application.
+        /// </summary>
+        /// <returns></returns>
+        public static Uri Installation(int installationId)
+        {
+            return "app/installations/{0}".FormatUri(installationId);
         }
 
         /// <summary>
@@ -2169,7 +2193,7 @@ namespace Octokit
         /// <returns></returns>
         public static Uri OauthAuthorize()
         {
-            return _oauthAuthorize;
+            return "login/oauth/authorize".FormatUri();
         }
 
         /// <summary>
@@ -2178,7 +2202,7 @@ namespace Octokit
         /// <returns></returns>
         public static Uri OauthAccessToken()
         {
-            return _oauthAccessToken;
+            return "login/oauth/access_token".FormatUri();
         }
 
         /// <summary>
